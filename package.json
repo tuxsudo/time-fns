@@ -1,9 +1,23 @@
 {
-  "name": "time-fns",
-  "version": "1.0.0",
-  "description": "Utility functions for dealing with the time of day.",
-  "main": "index.js",
-  "dependencies": {},
+  "name": "@tuxsudo/time",
+  "version": "1.0.1",
+  "description": "javascript time-of-day functions",
+  "main": "dist/cjs/main.js",
+  "module": "dist/es/main.js",
+  "modules.root": "dist/es",
+  "scripts": {
+    "clean": "trash dist format parse",
+    "build:es": "BABEL_ENV=es babel src -d dist/es",
+    "build:cjs": "BABEL_ENV=cjs babel src -d dist/cjs",
+    "build:cjs-plucks": "BABEL_ENV=cjs babel src --ignore main* -d .",
+    "build": "npm-run-all -p build:*",
+    "test": "BABEL_ENV=cjs tape -r babel-register 'src/**/*.test.js' | tap-spec",
+    "prepublish": "npm test && npm run build",
+    "postpublish": "npm run clean"
+  },
+  "keywords": [],
+  "author": "@tuxsudo",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.1",
@@ -15,16 +29,12 @@
     "tape": "^4.6.3",
     "trash-cli": "^1.4.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuxsudo/time-fns.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tuxsudo/time-fns/issues"
   },
