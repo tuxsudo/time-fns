@@ -1,6 +1,12 @@
 # Project specific
 /dist
+/diff
+/elapsedSeconds
 /format
+/isEQ
+/isGT
+/isLT
+/isTimeObject
 /parse
 
 
