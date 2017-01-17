@@ -5,13 +5,18 @@ Utility functions for dealing with the time of day.
 Tree-shake-able & pluck-able / `modules.root`-able?
 
 
-# install
+# Install
 
 ```
 npm i -S @tuxsudo/time
 ```
 
-# usage
+## Usage
+
+
+### ES6 module import
+
+Use this format if your build process includes tree-shaking.
 
 ```
 import {parse, format} from '@tuxsudo/time';
@@ -21,14 +26,16 @@ format('5p', 'h:mm:ss a'); // 5:00:00 pm
 ```
 
 
-## pluck-able format
+### Pluck-able format
+
+Use this format if your uses ES6 modules but no tree-shaking.
 
 ```
 import parse from '@tuxsudo/time/parse';
 parse('1111p')
 ```
 
-## commonjs format
+### CommonJS format
 
 ```
 var time = require('@tuxsudo/time');
@@ -37,7 +44,7 @@ time.format("23:03:01", 'hh aa');
 ```
 
 
-## api
+## API
 
 
 ### `parse`
@@ -79,10 +86,3 @@ options:
 *   `s`: second - 1 digit format (1, 2, ...10, 11, ...)
 *   `aa`: meridiem - 2 char format (am, pm)
 *   `a`: meridiem - 1 char format (a, p)
-
-
-## with `modules.root`
-
-```
-import parse from '@tuxsudo/time/parse';
-```
