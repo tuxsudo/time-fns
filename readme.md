@@ -5,7 +5,7 @@ Utility functions for dealing with the time of day.
 Tree-shake-able & pluck-able / `modules.root`-able?
 
 
-# Install
+## Install
 
 ```
 npm i -S @tuxsudo/time
