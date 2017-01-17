@@ -1,0 +1,16 @@
+{
+    "env" : {
+        "cjs": {
+            "presets": [
+              "latest",
+              "stage-2"
+            ]
+        },
+        "es": {
+            "presets": [
+                ["latest", { "es2015": { "modules": false }}],
+                "stage-2"
+            ]
+        }
+    }
+}
