@@ -1,4 +1,4 @@
-export const parse = (timeString="") => {
+export const parse = (input="") => {
 
     const [
         ,
@@ -6,8 +6,11 @@ export const parse = (timeString="") => {
         minutesString="0",
         secondsString="0",
         meridiemString="am"
-    ] = timeString.match(/^(\d{1,2})\s*[:]?\s*(\d{2})?\s*[:]?\s*(\d{2})?\s*([ap]m?)?$/i)
-        || [];
+    ] = (input)
+        .toString()
+        .match(/^(\d{1,2})\s*[:]?\s*(\d{2})?\s*[:]?\s*(\d{2})?\s*([ap]m?)?$/i)
+        || []
+    ;
 
     if(hoursString && minutesString) {
         const parsedHours = parseInt(hoursString);

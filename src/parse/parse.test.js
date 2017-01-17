@@ -122,11 +122,18 @@ test('parse', (t) => {
         );
     }
 
+    {
+        const {hours} = parse(9);
+        t.equal(hours, 9, 'coerces numbers to strings');
+    }
+
 
     {
         const results = parse('abc');
         t.equal(results, null, 'returns null when cant parse');
     }
+
+
 
 
 
