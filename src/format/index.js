@@ -1,4 +1,4 @@
-import safeParse from '../parse/cautiously';
+import parse from '../parse';
 
 const formatChar = (n, doPad = true) => (
     doPad && `${n}`.length===1
@@ -34,7 +34,7 @@ const charToTime = ({hours, minutes, seconds}) => (char) => {
 
 export const format = (input, pattern = "HH:mm:ss") => {
 
-    const timeData = safeParse(input);
+    const timeData = parse(input);
 
     return timeData
         ? pattern
