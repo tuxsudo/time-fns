@@ -47,7 +47,7 @@ time.format("23:03:01", 'hh aa');
 ## API
 
 
-### `parse`
+### `parse(time)`
 
 A flexible time-parser intended to extract the time of day from user input.
 
@@ -61,7 +61,9 @@ parse('22:00:00'); // {hours: 22, minutes: 0, seconds: 0};
 parse('n'); // null (error)
 ```
 
-### `format`
+
+
+### `format(time, pattern)`
 
 Format a time string
 
@@ -86,3 +88,59 @@ options:
 *   `s`: second - 1 digit format (1, 2, ...10, 11, ...)
 *   `aa`: meridiem - 2 char format (am, pm)
 *   `a`: meridiem - 1 char format (a, p)
+
+
+### `diff(from, to)`
+
+calculate the number of hours, minutes and seconds between two times. Order of arguments matter,
+so `diff('10p', '12a')` will produce different results than `diff('12a', '10p')`
+
+```
+import {diff} from '@tuxsudo/time';
+
+diff('7a', '730p'); // {hours: 12, minutes: 30, seconds: 0};
+diff('10p', '12p'); // {hours: 14, minutes: 0, seconds: 0}; <- went overnight
+
+```
+
+### `isEQ(time1, time2)`
+
+are `time2` and `time1` the same?
+
+```
+isEQ('8:01p', '20:01:00'); // true
+```
+
+### `isGT(time1, time2)`
+
+is `time2` greater than `time1`?
+
+```
+isGT('8p', '9a'); // false
+```
+
+### `isLT(time1, time2)`
+
+is `time2` less than `time1`?
+
+```
+isLT('8p', '9a'); // true
+```
+
+
+### `isTimeObject(timeObj)`
+
+checks if `timeObj` is a valid, `parse`d object
+
+```
+itTimeObject({hours: 1, minutes: 1, seconds: 1}); // true
+```
+
+
+### `elapsedSeconds(time1)`
+
+the number of elapsed seconds (since midnight)
+
+```
+elapsedSeconds('8:00:01p'); // 72001
+```
